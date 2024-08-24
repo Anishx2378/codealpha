@@ -1,0 +1,45 @@
+
+import re
+
+def respond(message):
+    # Define keywords and responses
+    responses = {
+        'hello': 'Hi there! How can I help you today?',
+        'hi': 'Hello! How can I assist you?',
+        'hey': 'Hey! How can I help?',
+        'how are you': 'I am just a bot, but I am functioning as expected!',
+        'what is your name': 'I am a simple rule-based chatbot.',
+        'who are you': 'I am a chatbot designed to assist you with basic queries.',
+        'what can you do': 'I can respond to simple questions and provide basic information.',
+        'bye': 'Goodbye! Have a great day!',
+        'exit': 'Goodbye! Have a great day!',
+        'help': 'Sure, I am here to help! Ask me anything.',
+        'what is the time': 'I am sorry, I cannot provide the current time.',
+        'tell me a joke': 'Why did the scarecrow win an award? Because he was outstanding in his field!',
+        'what is your purpose': 'My purpose is to assist you with basic queries and provide information.',
+        'thank you': 'You are welcome!',
+        'thanks': 'You are welcome!',
+        'who created you': 'I was created by a developer using Python.',
+
+
+    }
+
+    # Search for keywords in the user message and respond
+    for keyword, response in responses.items():
+        if re.search(r'\b' + re.escape(keyword) + r'\b', message, re.IGNORECASE):
+            return response
+
+    return "Sorry, I don't understand that. Can you please rephrase?"
+
+def main():
+    print("Chatbot: Hello! Type 'bye' to end the conversation.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ['bye', 'exit']:
+            print("Chatbot: Goodbye! Have a great day!")
+            break
+        response = respond(user_input)
+        print(f"Chatbot: {response}")
+
+if __name__ == "__main__":
+    main()

@@ -1,8 +1,6 @@
-!pip install kaggle
+
 import os
-!mkdir -p ~/.kaggle
-!mv kaggle.json ~/.kaggle/
-!chmod 600 ~/.kaggle/kaggle.json
+
 
 # Define the Kaggle dataset URL
 dataset_url = 'yasserh/housing-prices-dataset'
@@ -17,6 +15,7 @@ os.system(f'kaggle datasets download -d {dataset_url} -p .')
 import zipfile
 with zipfile.ZipFile('housing-prices-dataset.zip', 'r') as zip_ref:
     zip_ref.extractall('.')
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -47,7 +46,11 @@ def generate_report(data, report_path):
 def main():
     # Load data
     data_file = '/content/Housing.csv'
-    data = pd.read_csv(data_file)
+    data = pd.read_csv("Housing.csv")
+    
+
+    plt.show()
+
 
     # Generate and save the report
     os.makedirs('reports', exist_ok=True)
